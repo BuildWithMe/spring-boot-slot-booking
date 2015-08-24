@@ -87,24 +87,31 @@ public class RestLayer {
 	 */
 	private Response createResponse(SlotInfo info) {
 		Response response = new Response();
+		Integer startHr = null;
+		Integer endHr = null;
 		switch(info.getSlotId()){
 		case 1 : response.setSlotHours(
 				Slot.Slot1.getStartHours().toString() + "AM - " + Slot.Slot1.getEndHours().toString() + "AM");
 				response.setDate(info.getDate());
 				return response;
 		
-		case 2 : response.setSlotHours(
-				Slot.Slot2.getStartHours().toString() + "AM - " + Slot.Slot2.getEndHours().toString() + "PM");
+		case 2 : endHr =  Slot.Slot2.getEndHours() - 12;
+				response.setSlotHours(
+				Slot.Slot2.getStartHours().toString() + "AM - " + endHr.toString() + "PM");
 				response.setDate(info.getDate());
 				return response;
 				
-		case 3 : response.setSlotHours(
-				Slot.Slot3.getStartHours().toString() + "PM - " + Slot.Slot3.getEndHours().toString() + "PM");
+		case 3 : startHr = Slot.Slot3.getStartHours() - 12;
+				endHr = Slot.Slot3.getEndHours() - 12;
+				response.setSlotHours(
+				startHr.toString() + "PM - " + endHr.toString() + "PM");
 				response.setDate(info.getDate());
 				return response;
 				
-		case 4 : response.setSlotHours(
-				Slot.Slot4.getStartHours().toString() + "PM - " + Slot.Slot4.getEndHours().toString() + "PM");
+		case 4 : startHr = Slot.Slot4.getStartHours() - 12;
+				endHr = Slot.Slot4.getEndHours() - 12;
+				response.setSlotHours(
+				startHr.toString() + "PM - " + endHr.toString() + "PM");
 				response.setDate(info.getDate());
 				return response;
 		default : return response;
