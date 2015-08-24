@@ -79,6 +79,12 @@ public class RestLayer {
 		return new ResponseEntity<Object>(response,HttpStatus.OK);
 	}
 
+	/**
+	 * The method populates the response object
+	 * 
+	 * @param info
+	 * @return
+	 */
 	private Response createResponse(SlotInfo info) {
 		Response response = new Response();
 		switch(info.getSlotId()){
